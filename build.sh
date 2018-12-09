@@ -1,10 +1,5 @@
 #! /bin/bash
 
-# if [ $EUID -ne 0 ]; then
-#   echo "ERROR: This script must be run as root" 1>&2
-#   exit 1
-# fi
-
 # -----------
 # VARIABLES
 # ----------------
@@ -16,9 +11,25 @@ DIST_DIR=dist
 BOOT_DIR=$ISO_DIR/boot
 GRUB_DIR=$BOOT_DIR/grub
 
+# Check privileges
+[ $EUID -ne 0 ] && sudo='sudo' || sudo=''
+
 # -----------
 # PREBUILD
 # ----------------
+
+# Check dependencies
+dependencies=( nasm )
+for dep in ${dependencies[@]}; do
+  if ! dpkg -l $dep >/dev/null; then
+    $sudo apt-get install -y $dep
+  fi
+done
+
+if [ $EUID -eq 0 ]; then
+ echo "ERROR: Try rerunning the script without privileges" 1>&2
+ exit 1
+fi
 
 # Check GRUB directory
 [ -d $GRUB_DIR ] || mkdir -vp $GRUB_DIR
