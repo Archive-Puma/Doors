@@ -30,6 +30,7 @@ void checkPointer() {
 }
 
 void putCh(uint8 ch) {
+  uint8 space;
   uint16 position;
   
   switch(ch) {
@@ -37,7 +38,6 @@ void putCh(uint8 ch) {
       nl();
       break;
     case '\t':
-      uint8 space;
       for(space = 0; space < 8; space++)
         putCh(' ');
       break;
