@@ -30,14 +30,15 @@ void checkPointer() {
 }
 
 void putCh(uint8 ch) {
-  uint16 position = 0;
+  uint16 position;
   
   switch(ch) {
     case '\n':
       nl();
       break;
     case '\t':
-      for(uint8 space = 0; space < 8; space++)
+      uint8 space;
+      for(space = 0; space < 8; space++)
         putCh(' ');
       break;
     default:
@@ -47,25 +48,28 @@ void putCh(uint8 ch) {
       pointerX++;
       break;
   }
-  
+
   checkPointer();
 }
 
 void putStr(string str) {
-  for(uint8 ch = 0; ch < len(str); ch++)
+  uint8 ch;
+  for(ch = 0; ch < len(str); ch++)
     putCh(str[ch]);
 }
 
 void clsLine(uint8 line) {
+  uint16 position;
   uint16 origin = line * width * size;
-  for(uint16 position = origin; position < origin + width * size; position++) {
+  for(position = origin; position < origin + width * size; position++) {
     screen[position++] = ' ';
     screen[position] = color;
   }
 }
 
 void cls() {
-  for(uint8 line = 0; line < height; line++)
+  uint8 line;
+  for(line = 0; line < height; line++)
     clsLine(line);
 }
 
