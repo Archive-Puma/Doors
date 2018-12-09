@@ -22,6 +22,7 @@ GRUB_DIR=$BOOT_DIR/grub
 dependencies=( nasm )
 for dep in ${dependencies[@]}; do
   if ! dpkg -l $dep >/dev/null; then
+    echo "Installing $dep"
     $sudo apt-get install -y $dep
   fi
 done
@@ -67,7 +68,7 @@ Makefile
 # ----------------
 
 # Compile the files and link them
-make
+make || exit 1
 
 # Create the ISO image
 grub-mkrescue -o $DIST_DIR/$OS.iso $ISO_DIR
