@@ -19,10 +19,9 @@ GRUB_DIR=$BOOT_DIR/grub
 # ----------------
 
 # Check dependencies
-dependencies=( nasm )
+dependencies=( gcc grub nasm xorriso )
 for dep in ${dependencies[@]}; do
-  if ! dpkg -l $dep >/dev/null; then
-    echo "Installing $dep"
+  if ! dpkg -l $dep &>/dev/null; then
     $sudo apt-get install -y $dep
   fi
 done
