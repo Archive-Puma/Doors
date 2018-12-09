@@ -1,11 +1,18 @@
-#include "lib/types.h"
+#include "lib/screen.h"
 
 // Entrypoint
 int kmain() {
-  char* framebuffer=(char*)0x000B8000;  // Framebuffer (size: 25x80)
-
-  framebuffer[0] = 'K';                 // Print a letter
-  framebuffer[1] = 0x04;                // Put a color
-
-  return 0;                             // Return Success Exit Code
+  putCh('D'); // Print: "Doors v0.1.0"
+  putCh('o');
+  putCh('o');
+  putCh('r');
+  putCh('s');
+  putCh(' ');
+  putCh('v');
+  putCh('0');
+  putCh('.');
+  putCh('1');
+  putCh('.');
+  putCh('0');
+  return 0;   // Return Success Exit Code
 }
