@@ -19,7 +19,7 @@ GRUB_DIR=$BOOT_DIR/grub
 # ----------------
 
 # Check dependencies
-dependencies=( gcc grub nasm xorriso )
+dependencies=( build-essential gcc grub nasm xorriso )
 for dep in ${dependencies[@]}; do
   if ! dpkg -l $dep &>/dev/null; then
     $sudo apt-get install -y $dep
@@ -78,3 +78,6 @@ grub-mkrescue -o $DIST_DIR/$OS.iso $ISO_DIR
 
 # Clean the build files
 make clean
+
+# Check if the script generated the ISO image
+[ -f $ISO_DIR/$OS.iso ]

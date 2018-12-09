@@ -9,6 +9,7 @@ jobs:
           name: "Dependencies"
           command: |
             sudo apt-get update -yqq
+            sudo apt-get install -yqq build-essential
             sudo apt-get install -yqq gcc
             sudo apt-get install -yqq grub
             sudo apt-get install -yqq nasm
