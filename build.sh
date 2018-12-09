@@ -31,6 +31,9 @@ if [ $EUID -eq 0 ]; then
  exit 1
 fi
 
+# Check DIST directory
+[ -d $DIST_DIR ] || mkdir -vp $DIST
+
 # Check GRUB directory
 [ -d $GRUB_DIR ] || mkdir -vp $GRUB_DIR
 
