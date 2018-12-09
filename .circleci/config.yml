@@ -6,13 +6,13 @@ jobs:
     steps:
       - checkout
       - run:
-        name: "Dependencies"
-        command: |
-          apt-get update -yqq
-          apt-get install -yqq gcc
-          apt-get install -yqq grub
-          apt-get install -yqq nasm
-          apt-get install -yqq xorriso
+          name: "Dependencies"
+          command: |
+            apt-get update -yqq
+            apt-get install -yqq gcc
+            apt-get install -yqq grub
+            apt-get install -yqq nasm
+            apt-get install -yqq xorriso
       - run:
-        name: "Build"
-        command: ./build.sh
+          name: "Build"
+          command: ./build.sh
