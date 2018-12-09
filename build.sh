@@ -32,7 +32,7 @@ if [ $EUID -eq 0 ]; then
 fi
 
 # Check DIST directory
-[ -d $DIST_DIR ] || mkdir -vp $DIST
+[ -d $DIST_DIR ] || mkdir -vp $DIST_DIR
 
 # Check GRUB directory
 [ -d $GRUB_DIR ] || mkdir -vp $GRUB_DIR
@@ -83,4 +83,4 @@ grub-mkrescue -o $DIST_DIR/$OS.iso $ISO_DIR
 make clean
 
 # Check if the script generated the ISO image
-[ -f $ISO_DIR/$OS.iso ]
+[ -f $DIST_DIR/$OS.iso ]
