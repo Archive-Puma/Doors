@@ -50,6 +50,8 @@ GRUB_CONFIG
 
 # Check Makefile
 [ -f Makefile ] || cat > Makefile << Makefile
+FLAGS=-m32 -c -Wall -Wextra -Werror -nostdlib -nostdinc -fno-builtin -fno-stack-protector -nostartfiles -nodefaultlibs
+
 all: kernel.bin
 
 kernel.bin: kernel.o bootloader.o $SRC_DIR/link.ld
@@ -59,7 +61,7 @@ bootloader.o:
 	nasm -f elf32 -o bootloader.o $SRC_DIR/bootloader.asm
 
 kernel.o:
-	gcc -m32 -c -o kernel.o $SRC_DIR/kernel.c
+	gcc \${FLAGS} -o kernel.o $SRC_DIR/kernel.c
 
 clean:
 	rm -rf *.o iso Makefile
