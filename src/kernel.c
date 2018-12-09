@@ -2,6 +2,7 @@
 
 // Entrypoint
 int kmain() {
-  putStr("Doors v0.1.1 ~ Strings!");
+  cls();
+  putStr("Doors v0.1.2!");
   return 0;   // Return Success Exit Code
 }
