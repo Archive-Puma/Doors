@@ -8,11 +8,11 @@ jobs:
       - run:
           name: "Dependencies"
           command: |
-            apt-get update -yqq
-            apt-get install -yqq gcc
-            apt-get install -yqq grub
-            apt-get install -yqq nasm
-            apt-get install -yqq xorriso
+            sudo apt-get update -yqq
+            sudo apt-get install -yqq gcc
+            sudo apt-get install -yqq grub
+            sudo apt-get install -yqq nasm
+            sudo apt-get install -yqq xorriso
       - run:
           name: "Build"
           command: ./build.sh
