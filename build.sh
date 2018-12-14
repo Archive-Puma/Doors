@@ -5,7 +5,6 @@
 # ----------------
 
 OS=Doors
-SRC_DIR=src
 ISO_DIR=iso
 DIST_DIR=dist
 BOOT_DIR=$ISO_DIR/boot
@@ -47,25 +46,6 @@ menuentry $OS {
   multiboot /boot/kernel.bin
 }
 GRUB_CONFIG
-
-# Check Makefile
-[ -f Makefile ] || cat > Makefile << Makefile
-FLAGS=-m32 -c -Wall -Wextra -Werror -nostdlib -nostdinc -fno-builtin -fno-stack-protector -nostartfiles -nodefaultlibs
-
-all: kernel.bin
-
-kernel.bin: kernel.o bootloader.o $SRC_DIR/link.ld
-	ld -m elf_i386 -T $SRC_DIR/link.ld -o $BOOT_DIR/kernel.bin bootloader.o kernel.o
-
-bootloader.o:
-	nasm -f elf32 -o bootloader.o $SRC_DIR/bootloader.asm
-
-kernel.o:
-	gcc \${FLAGS} -o kernel.o $SRC_DIR/kernel.c
-
-clean:
-	rm -rf *.o iso Makefile
-Makefile
 
 # -----------
 # BUILD

@@ -1,4 +1,4 @@
-#include "lib/screen.h"
+#include "include/screen.h"
 
 // Entrypoint
 int kmain() {

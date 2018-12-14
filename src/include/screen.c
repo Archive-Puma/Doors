@@ -1,23 +1,8 @@
-#ifndef SCREEN_INCLUDE
-#define SCREEN_INCLUDE
-
-#include "types.h"
-#include "string.h"
+#include "screen.h"
 
 const string screen = (string) 0x000B8000;
 const uint8 width = 80, height = 25, size = 2;
 uint8 pointerX = 0, pointerY = 0, color = 0x7F;
-
-void test() {
-  screen[0]   = '0';
-  screen[1]   = 0x1F;
-  screen[160] = '1';
-  screen[161] = 0x2F;
-  screen[320] = '2';
-  screen[321] = 0x3F;
-  screen[480] = '3';
-  screen[481] = 0x4F;
-}
 
 void nl() {
   pointerY++;
@@ -32,7 +17,7 @@ void checkPointer() {
 void putCh(uint8 ch) {
   uint8 space;
   uint16 position;
-  
+
   switch(ch) {
     case '\n':
       nl();
@@ -72,5 +57,3 @@ void cls() {
   for(line = 0; line < height; line++)
     clsLine(line);
 }
-
-#endif
