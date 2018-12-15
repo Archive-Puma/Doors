@@ -2,7 +2,7 @@
 
 const string screen = (string) 0x000B8000;
 const uint8 width = 80, height = 25, size = 2;
-uint8 pointerX = 0, pointerY = 0, color = 0x7F;
+uint8 pointerX = 0, pointerY = 0, color = 0x0F;
 
 void nl() {
   pointerY++;
@@ -56,4 +56,8 @@ void cls() {
   uint8 line;
   for(line = 0; line < height; line++)
     clsLine(line);
+}
+
+void changeColor(uint8 bg, uint8 text) {
+  color = (bg << 4) + text;
 }

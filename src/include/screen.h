@@ -3,12 +3,14 @@
 
 #include "types.h"
 #include "string.h"
+#include "system.h"
 
 void nl();
 void cls();
+void putCh(uint8);
+void putStr(string);
+void clsLine(uint8);
 void checkPointer();
-void putCh(uint8 ch);
-void putStr(string str);
-void clsLine(uint8 line);
+void changeColor(uint8,uint8);
 
 #endif
