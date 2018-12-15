@@ -13,7 +13,7 @@ bootloader.o:
 	nasm -f elf32 -o bootloader.o src/bootloader.asm
 
 kernel.bin: $(OBJECTS) bootloader.o src/link.ld
-	ld -m elf_i386 -T src/link.ld -o iso/boot/kernel.bin src/bootloader.o $(OBJECTS)
+	ld -m elf_i386 -T src/link.ld -o iso/boot/kernel.bin bootloader.o $(OBJECTS)
 
 clean:
 	rm -rf iso bootloader.o $(OBJECTS)
