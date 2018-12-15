@@ -1,10 +1,16 @@
 #include "include/screen.h"
 #include "include/colors.h"
 
-// Entrypoint
+/** kmain
+ *  Entrypoint of the program
+ *
+ *  @return Exit code
+ */
 int kmain() {
-  changeColor(C_LIGHTBLUE,C_WHITE);
-  cls();
-  putStr("Doors v0.1.3!");
-  return 0;   // Return Success Exit Code
+  initScreen(LIGHTBLUE,WHITE);
+  putStr("\n\t\t\t\tDoors v0.1.4!\n\n");
+  for(short i = 0; i < 1000; i++) {
+    putStr(" free ");
+  }
+  return 0;
 }
