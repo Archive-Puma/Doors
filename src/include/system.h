@@ -3,7 +3,10 @@
 
 #include "types.h"
 
-// uint8 inport(uint16);
+#define KEYSTATE 0x60
+#define KEYVALUE 0x65
+
+uint8 inport(uint16);
 void outport(uint16,uint8);
 
 #endif

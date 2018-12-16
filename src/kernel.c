@@ -8,9 +8,15 @@
  */
 int kmain() {
   initScreen(LIGHTBLUE,WHITE);
-  putStr("\n\t\t\t\tDoors v0.1.4!\n\n");
-  for(short i = 0; i < 1000; i++) {
+
+  uint8 index, head = 0x28, tail = 0xFD;
+
+  for(index = 0x00; index < head; index++)
     putStr(" free ");
-  }
+  putStr("\n\n\n\t\t\t\t  Doors v0.1.4!\n\n\n");
+  for(index = 0x00; index < tail; index++)
+    putStr(" free ");
+
+  while(1);
   return 0;
 }
